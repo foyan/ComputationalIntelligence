@@ -39,12 +39,12 @@ namespace EA.Tests {
                 var children = Enumerable.Range(0, 15).SelectMany(i => _recombiner.Recombine(parents)).OfType<Barrel>().ToList();
 
                 // mutation
-                children.ForEach(b => b.Code = _mutator.MutateCode(b.Code));
+                //children.ForEach(b => b.Code = _mutator.MutateCode(b.Code));
 
                 children.ForEach(b => b.Decode());
 
                 // selection
-                population = Enumerable.Range(0, 30).Select(i => _selection.Select(children)).OfType<Barrel>().ToList();
+                population = children;
 
                 _reporter.Report(r, population);
             }

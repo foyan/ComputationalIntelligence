@@ -20,6 +20,10 @@ namespace EA {
                   *Enumerable.Range(0, GetBinaryEncodingLength()).Sum(j => int.Parse(code[j].ToString())*Math.Pow(2, j));
 
         }
+
+        public void DecodeReal(string code) {
+            Val = double.Parse(code);
+        }
     
     }
 
