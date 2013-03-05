@@ -17,7 +17,7 @@ namespace EA.Tests {
         public void SetUp() {
             _encoder = new RandomizedBinaryEncoder();
             _selection = new RankSelection(new RandomNumberGenerator());
-            _mutator = new Mutator(new RandomNumberGenerator()) { Probability = 0.1 };
+            _mutator = new BinaryMutator(new RandomNumberGenerator()) { Probability = 0.1 };
             _recombiner = new SinglePointRecombiner(new RandomNumberGenerator()) { Create = () => new Barrel()};
             _reporter = new Reporter();
         }
@@ -52,7 +52,7 @@ namespace EA.Tests {
                     var children = pop.Except(parents).Union(newChildren).ToList();
 
                     // mutation
-                    children.ForEach(b => b.Code = _mutator.MutateCode(b.Code));
+                    children.ForEach(_mutator.Mutate);
 
                     children = children.Select(b => new Barrel { Code = b.Code }).ToList();
                     children.ForEach(b => b.Decode());

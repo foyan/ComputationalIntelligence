@@ -32,6 +32,12 @@ namespace EA.Tests {
             Assert.That(integral, Is.EqualTo(1.0).Within(0.00000001));
         }
 
+        [Test]
+        public void StandardDistributionShouldBeABell() {
+            var rnd = new RandomNumberGenerator();
+            var distribution = Enumerable.Range(0, 1000000).Select(x => rnd.StandardDistributed(0, 1)).GroupBy(x => (int)(x / 6d * 100d)).OrderBy(x => x.Key).Select(x => (double)x.Count() / 10000d).ToList();
+        }
+
     }
 
 }

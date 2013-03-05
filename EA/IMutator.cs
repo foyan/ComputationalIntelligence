@@ -2,7 +2,7 @@
 
     public interface IMutator {
 
-        string MutateCode(string code);
+        void Mutate(IIndividual individual);
 
     }
 
