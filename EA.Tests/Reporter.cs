@@ -10,6 +10,8 @@ namespace EA.Tests {
 
         private double _bestest = double.MaxValue;
 
+        private readonly List<KeyValuePair<double, double>> _last = new List<KeyValuePair<double, double>>();
+
         public void Report(int generation, IEnumerable<IIndividual> population) {
             var pop = population.Where(p => p.Fit().IsFit).Select(p => p.Fit().Value).ToList();
 
@@ -24,10 +26,17 @@ namespace EA.Tests {
                                       Bestest = _bestest
                                   });
 
+            _last.Clear();
+            _last.AddRange(population.Select(p => new KeyValuePair<double, double>(((VegaBarrel)p).F1(), ((VegaBarrel)p).F2())));
+
         }
 
         public void Write() {
             Console.WriteLine(string.Join("\r\n", _reports.Select(r => "#" + r.Generation + ": min=" + r.Min + ",max=" + r.Max + ",sigma=" + r.Sigma + ",count=" + r.Count + ",bestest=" + r.Bestest)));
+        }
+
+        public void ReportLast() {
+            _last.ForEach(p => Console.WriteLine(p.Key + "," + p.Value));
         }
 
         private class Item {

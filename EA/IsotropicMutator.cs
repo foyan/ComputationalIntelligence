@@ -25,7 +25,7 @@ namespace EA {
             var u = individual.NumberOfObjectParams;
             var sigma = GetSigma(individual);
 
-            individual.ForEachObjectParam(o => o.Val += _random.StandardDistributed(0, sigma.Val));
+            individual.ForEachObjectParam(o => o.Val += Tau(u) * _random.StandardDistributed(0, sigma.Val));
 
         }
 
