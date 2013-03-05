@@ -34,6 +34,14 @@ namespace EA {
             H.DecodeBinary(Code.Substring(D.GetBinaryEncodingLength()));
         }
 
+        public Value GetObjectParams(int index) {
+            return index == 0 ? D : H;
+        }
+
+        public int NumberOfObjectParams {
+            get { return 2; }
+        }
+
         public FitResult Fit() {
             return new FitResult { IsFit = G(), Value = F() };
         }

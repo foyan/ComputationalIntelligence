@@ -8,8 +8,16 @@ namespace EA {
 
         private readonly IRandomNumberGenerator _randomNumberGenerator;
 
+        public Func<IIndividual> Create { get; set; }
+
         public SinglePointRecombiner(IRandomNumberGenerator randomNumberGenerator) {
             _randomNumberGenerator = randomNumberGenerator;
+        }
+
+        private IIndividual CreateIndividual(string code) {
+            var i = Create();
+            i.Code = code;
+            return i;
         }
 
         public IEnumerable<IIndividual> Recombine(IEnumerable<IIndividual> parents) {
@@ -23,13 +31,8 @@ namespace EA {
 
             var index = _randomNumberGenerator.GetInt(0, mom.Code.Length);
 
-            yield return new Barrel {
-                Code = mom.Code.Substring(0, index) + dad.Code.Substring(index)
-            };
-
-            yield return new Barrel {
-                Code = dad.Code.Substring(0, index) + mom.Code.Substring(index)
-            };
+            yield return CreateIndividual(mom.Code.Substring(0, index) + dad.Code.Substring(index));
+            yield return CreateIndividual(dad.Code.Substring(0, index) + mom.Code.Substring(index));
 
         }
 

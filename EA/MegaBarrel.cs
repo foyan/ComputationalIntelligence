@@ -32,6 +32,14 @@ namespace EA {
             return new FitResult { IsFit = G(), Value = F() };
         }
 
+        public Value GetObjectParams(int index) {
+            return index == 0 ? D : H;
+        }
+
+        public int NumberOfObjectParams {
+            get { return 2; }
+        }
+
         public override string ToString() {
             return "d=" + D.Val + ",h=" + H.Val + ",F(d,h)=" + F() + ",G(d,h)=" + G();
         }

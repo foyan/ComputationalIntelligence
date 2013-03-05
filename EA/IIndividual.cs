@@ -14,6 +14,10 @@ namespace EA {
 
         FitResult Fit();
 
+        Value GetObjectParams(int index);
+
+        int NumberOfObjectParams { get; }
+
     }
 
 }

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CloneRecombiner.cs" />
+    <Compile Include="DiscreteRecombiner.cs" />
     <Compile Include="FitResult.cs" />
     <Compile Include="IIndividual.cs" />
     <Compile Include="Barrel.cs" />

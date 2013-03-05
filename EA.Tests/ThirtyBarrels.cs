@@ -16,7 +16,7 @@ namespace EA.Tests {
         public void SetUp() {
             _encoder = new RandomizedBinaryEncoder();
             _selection = new RankSelection(new RandomNumberGenerator());
-            _recombiner = new SinglePointRecombiner(new RandomNumberGenerator());
+            _recombiner = new SinglePointRecombiner(new RandomNumberGenerator()) {Create = () => new Barrel()};
             _mutator = new Mutator(new RandomNumberGenerator()) {Probability = 0.005};
             _reporter = new Reporter();
         }

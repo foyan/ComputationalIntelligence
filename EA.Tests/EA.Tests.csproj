@@ -48,6 +48,7 @@
     <Compile Include="Reporter.cs" />
     <Compile Include="Slide20.cs" />
     <Compile Include="Slide35.cs" />
+    <Compile Include="SyntaxSugarTests.cs" />
     <Compile Include="ThirtyBarrels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueTests.cs" />

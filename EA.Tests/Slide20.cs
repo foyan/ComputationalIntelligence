@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using NUnit.Framework;
 
 namespace EA.Tests {
@@ -17,7 +18,7 @@ namespace EA.Tests {
             _encoder = new RandomizedBinaryEncoder();
             _selection = new RankSelection(new RandomNumberGenerator());
             _mutator = new Mutator(new RandomNumberGenerator()) { Probability = 0.1 };
-            _recombiner = new SinglePointRecombiner(new RandomNumberGenerator());
+            _recombiner = new SinglePointRecombiner(new RandomNumberGenerator()) { Create = () => new Barrel()};
             _reporter = new Reporter();
         }
 
